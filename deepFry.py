@@ -12,6 +12,7 @@ img = cv2.imread(img_path)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 bg_img = Image.open(img_path)
+
 for (x,y,w,h) in faces:
     cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
     roi_gray = gray[y:y+h, x:x+w]
@@ -39,5 +40,3 @@ img2 = converter2.enhance(20.0)
 converter3 = ImageEnhance.Contrast(img2)
 img2 = converter3.enhance(2.0)
 img2.save("final_images/"+filename+'_fried.png')
-
-exit()
